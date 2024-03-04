@@ -47,7 +47,7 @@ class CurrencyGoldExchanger:
         return pln / rate / 1000
     
     
-    def curr_to_pln(self, amount, curr):
+    def curr_to_pln(self, amount, currency):
         """
         Exchanges given currency to PLN using the current exchange rate.
         
@@ -59,12 +59,12 @@ class CurrencyGoldExchanger:
             float or str: The equivalent amount in PLN if successful, 
                           otherwise an error message from the fetcher.
         """
-        rate = self.fetcher.get_selling_rate(curr)
+        rate = self.fetcher.get_selling_rate(currency)
         if isinstance(rate, str):
             return rate  # This is an error message from get_selling_rate
         return amount * rate
 
-    def curr_to_gold(self, amount, curr):
+    def curr_to_gold(self, amount, currency):
         """
         Calculates how many kilograms of gold can be bought for given amount in the given currency.
         
@@ -76,7 +76,7 @@ class CurrencyGoldExchanger:
             float or str: The equivalent amount in kilograms of gold if successful, 
                           otherwise an error message from the fetcher.
         """
-        pln = self.curr_to_pln(amount, curr)
+        pln = self.curr_to_pln(amount, currency)
         if isinstance(pln, str):
             return pln  # This is an error message from curr_to_pln
         return self.pln_to_gold(pln)
