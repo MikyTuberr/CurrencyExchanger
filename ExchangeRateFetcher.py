@@ -3,12 +3,12 @@ import requests
 class ExchangeRateFetcher:
     """A class to fetch exchange rates and gold prices from the NBP API."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         """Initializes the API URL and format."""
         self._API_URL = 'http://api.nbp.pl/api'
         self._FORMAT_JSON = '/?format=json'
         
-    def _fetch_data(self, endpoint, currency=None):
+    def _fetch_data(self, endpoint: str, currency: str = None) -> dict | str:
         """
         Helper method to fetch data from the NBP API.
         
@@ -33,7 +33,7 @@ class ExchangeRateFetcher:
             
         return response.json()
     
-    def get_avg_exchange_rate(self, currency):
+    def get_avg_exchange_rate(self, currency: str) -> float | str:
         """
         Fetches the current average exchange rate for the given currency from the NBP API.
         
@@ -49,7 +49,7 @@ class ExchangeRateFetcher:
             return data
         return data['rates'][0]['mid']
     
-    def get_selling_rate(self, currency):
+    def get_selling_rate(self, currency: str) -> float | str:
         """
         Fetches the current selling rate for the given currency from the NBP API.
         
@@ -65,7 +65,7 @@ class ExchangeRateFetcher:
             return data
         return data['rates'][0]['bid']
     
-    def get_buying_rate(self, currency):
+    def get_buying_rate(self, currency: str) -> float | str:
         """
         Fetches the current buying rate for the given currency from the NBP API.
         
@@ -81,7 +81,7 @@ class ExchangeRateFetcher:
             return data
         return data['rates'][0]['ask']
     
-    def get_gold_rate(self):
+    def get_gold_rate(self) -> float | str:
         """
         Fetches the current gold price from the NBP API.
 

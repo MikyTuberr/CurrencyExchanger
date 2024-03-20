@@ -3,7 +3,7 @@ from ExchangeRateFetcher import ExchangeRateFetcher as erf
 class CurrencyGoldExchanger:
     """A class to exchange given currency, using the NBP API."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         """
         Initializes the CurrencyGoldExchanger with a fetcher.
         
@@ -12,7 +12,7 @@ class CurrencyGoldExchanger:
         """
         self.fetcher = erf()
 
-    def pln_to_curr(self, pln, currency):
+    def pln_to_curr(self, pln: float, currency: str) -> float | str:
         """
         Exchanges PLN to the given currency using the current exchange rate.
         
@@ -30,7 +30,7 @@ class CurrencyGoldExchanger:
         return pln / rate
     
 
-    def pln_to_gold(self, pln):
+    def pln_to_gold(self, pln: float) -> float | str:
         """
         Calculates how many kilograms of gold can be bought for the given amount in PLN.
         
@@ -47,7 +47,7 @@ class CurrencyGoldExchanger:
         return pln / rate / 1000
     
     
-    def curr_to_pln(self, amount, currency):
+    def curr_to_pln(self, amount: float, currency: str) -> float | str:
         """
         Exchanges given currency to PLN using the current exchange rate.
         
@@ -64,7 +64,7 @@ class CurrencyGoldExchanger:
             return rate  # This is an error message from get_selling_rate
         return amount * rate
 
-    def curr_to_gold(self, amount, currency):
+    def curr_to_gold(self, amount: float, currency: str) -> float | str:
         """
         Calculates how many kilograms of gold can be bought for given amount in the given currency.
         

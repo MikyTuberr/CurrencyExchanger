@@ -1,7 +1,7 @@
 from ExchangeRateFetcher import ExchangeRateFetcher as erf
 from CurrencyGoldExchanger import CurrencyGoldExchanger as cge
 
-def print_error_message(error_message):
+def print_error_message(error_message: str) -> None:
     """Prints an error message.
 
     Args:
@@ -9,7 +9,7 @@ def print_error_message(error_message):
     """
     print(f"An error occurred: {error_message}")
 
-def print_exchange_info(amount, currency1, amount2, currency2):
+def print_exchange_info(amount: float, currency1: str, amount2: float, currency2: str) -> None:
     """Prints the exchange information.
 
     Args:
@@ -20,7 +20,7 @@ def print_exchange_info(amount, currency1, amount2, currency2):
     """
     print(f"With {amount} {currency1.upper()}, you could buy {amount2} {currency2.upper()}")
 
-def process_exchange(amount, currency1, amount2, currency2):
+def process_exchange(amount: float, currency1: str, amount2: float, currency2: str) -> None:
     """Processes the exchange and prints the exchange information.
 
     Args:
@@ -34,7 +34,7 @@ def process_exchange(amount, currency1, amount2, currency2):
     else:
         print_exchange_info(amount, currency1, amount2, currency2)
 
-def main():
+def main() -> None:
     """Demonstrates the capabilities of the ExchangeRateFetcher and CurrencyGoldExchanger classes."""
     fetcher = erf()
     exchanger = cge()
